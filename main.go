@@ -20,6 +20,10 @@ func main() {
 	// Recovery middleware
 	r.Use(gin.Recovery())
 
+	r.GET("/", func(c *gin.Context) {
+		c.Redirect(http.StatusFound, "https://github.com/irisvn/laravel-sail-builder")
+	})
+
 	r.GET("/:folder", func(c *gin.Context) {
 		// Get parameters from request
 		folder := strings.TrimSpace(c.Param("folder"))
